@@ -14,11 +14,13 @@ const camera = new PerspectiveCamera(
 )
 
 const renderer = new WebGLRenderer({
-  antialias: true
+  antialias: true,
+  alpha: true
 })
 
 renderer.setSize(innerWidth, innerHeight)
 renderer.setPixelRatio(window.devicePixelRatio)
+renderer.setClearColor(0x000000, 0);
 document.body.appendChild(renderer.domElement)
 
 const sphere = new Mesh(new SphereGeometry(5, 50, 50), new ShaderMaterial({
@@ -33,7 +35,6 @@ const sphere = new Mesh(new SphereGeometry(5, 50, 50), new ShaderMaterial({
 
 scene.add(sphere)
 
-
 const atmosphere = new Mesh(new SphereGeometry(5, 50, 50), new ShaderMaterial({
   vertexShader: atmosphereVertexShader,
   fragmentShader: atmosphereFragmentShader,
@@ -41,7 +42,7 @@ const atmosphere = new Mesh(new SphereGeometry(5, 50, 50), new ShaderMaterial({
   side: BackSide
 }))
 
-atmosphere.scale.set(1.1, 1.1, 1.1)
+atmosphere.scale.set(1.2, 1.2, 1.2)
 
 scene.add(atmosphere)
 
